@@ -87,7 +87,7 @@ Each member records their contributions here.
 | Date       | Work Completed / Notes |
 |------------|------------------------|
 | 2026-10-23 | Created README.md document, along with completing part1 of the project, before moving onto research and the creation of part2  |
-| YYYY-MM-DD | [Description of task]  |
+| YYYY-MM-DD | Created makefile and did some adjustment to the my_timer.c file. Added .gitignore file.   |
 | YYYY-MM-DD | [Description of task]  |
 
 ### Malachi Davey

@@ -31,7 +31,7 @@ static ssize_t timer_read(struct file *file, char __user *ubuf, size_t count, lo
         diff.tv_sec = ts_now.tv_sec - ts_past.tv_sec;
         diff.tv_nsec = ts_now.tv_nsec - ts_past.tv_nsec;
         if (diff.tv_nsec < 0) {
-            printk(KERN_ERR "Time difference calculation error\n");
+            printf(KERN_ERR "Time difference calculation error\n");
         }
         len = snprintf(buf, sizeof(buf), "current time: %lld\n", (long long)ts_now.tv_sec);
         len += snprintf(buf + len, sizeof(buf) - len, "time difference: %lld.%09ld\n", (long long)diff.tv_sec, diff.tv_nsec);
@@ -58,7 +58,6 @@ static int __init my_timer_init(void)
 {
     timer_entry = proc_create(ENTRY_NAME, PERMS, PARENT, &timer_fops);
     if (!timer_entry) {
-        printk(KERN_ERR "Failed to create proc entry\n");
         return -ENOMEM;
     }
     return 0;
