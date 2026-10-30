@@ -5,16 +5,16 @@
 #include <linux/timekeeping.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Nathaniel Thompson");
+MODULE_AUTHOR("Nathaniel Thompson, Malachi Davey");     // FIX: both authors
 MODULE_DESCRIPTION("Timer Module for class COP4610");
 
-#define ENTRY_NAME "my_timer"
-#define PERMS 0644
+#define ENTRY_NAME "timer"      // FIX: spec requires /proc/timer 
+#define PERMS 0444              // FIX: read-only entry 
 #define PARENT NULL
 
 static struct proc_dir_entry* timer_entry;
-bool timer_initialized = false;
-struct timespec64 ts_past;
+static bool timer_initialized = false;  // FIX: static, don't leak into kernel namespace 
+static struct timespec64 ts_past;       // FIX: static 
 
 static ssize_t timer_read(struct file *file, char __user *ubuf, size_t count, loff_t *ppos)
 {
@@ -22,31 +22,37 @@ static ssize_t timer_read(struct file *file, char __user *ubuf, size_t count, lo
     char buf[256];
     int len = 0;
 
+    // FIX: cat calls read again to check for EOF; return before touching ts_past 
+    if (*ppos > 0)
+        return 0;
+
     ktime_get_real_ts64(&ts_now);
 
-    if(timer_initialized)
+    // FIX: current time now includes nanoseconds
+    len = snprintf(buf, sizeof(buf), "current time: %lld.%09ld\n",
+                   (long long)ts_now.tv_sec, ts_now.tv_nsec);
+
+    if (timer_initialized)
     {
         //difference between current and past times
         struct timespec64 diff;
         diff.tv_sec = ts_now.tv_sec - ts_past.tv_sec;
         diff.tv_nsec = ts_now.tv_nsec - ts_past.tv_nsec;
         if (diff.tv_nsec < 0) {
-            printf(KERN_ERR "Time difference calculation error\n");
+            // FIX: borrow a second instead of printing an error (printf doesn't exist in kernel) 
+            diff.tv_sec -= 1;
+            diff.tv_nsec += NSEC_PER_SEC;
         }
-        len = snprintf(buf, sizeof(buf), "current time: %lld\n", (long long)ts_now.tv_sec);
-        len += snprintf(buf + len, sizeof(buf) - len, "time difference: %lld.%09ld\n", (long long)diff.tv_sec, diff.tv_nsec);
-    }
-    else
-    {
-        len = snprintf(buf, sizeof(buf), "current time: %lld\n", (long long)ts_now.tv_sec);
+        /* FIX: label matches spec */
+        len += snprintf(buf + len, sizeof(buf) - len, "elapsed time: %lld.%09ld\n",
+                        (long long)diff.tv_sec, diff.tv_nsec);
     }
 
-    if (!timer_initialized)
-    {
-        timer_initialized = true;
-        ts_past = ts_now;
-    }
-    return simple_read_from_buffer(ubuf, count, ppos, buf, len); // better than copy_from_user
+    // FIX: update on every read so elapsed is since the LAST call, not the first
+    timer_initialized = true;
+    ts_past = ts_now;
+
+    return simple_read_from_buffer(ubuf, count, ppos, buf, len); // copies to user space
 }
 
 static const struct proc_ops timer_fops = {

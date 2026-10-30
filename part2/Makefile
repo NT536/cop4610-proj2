@@ -1,8 +1,11 @@
-obj -m += my_timer.o
-ccflags-y := -g -Wno-error
-KDIR := /lib/modules/$(shell uname
--r)/build
+obj-m += my_timer.o
+my_timer-objs := src/my_timer.o
+
+KDIR ?= /lib/modules/$(shell uname -r)/build
+PWD := $(shell pwd)
+
 all:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules
+
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean
