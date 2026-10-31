@@ -87,10 +87,10 @@ Each member records their contributions here.
 | Date       | Work Completed / Notes |
 |------------|------------------------|
 | 2026-10-23 | Created README.md document, along with completing part1 of the project, before moving onto research and the creation of part2  |
-| YYYY-MM-DD | Created makefile and did some adjustment to the my_timer.c file. Added .gitignore file.   |
-| YYYY-MM-DD | [Description of task]  |
+| 2026-10-29 | Created makefile and did some adjustment to the my_timer.c file. Added .gitignore file.   |
+| 2026-10-30 | Compiled and installed the kernel system calls into the Linux VM. Was stalled part way through. |
 
-### Malachi Davey
+### Akshat Thapliyal
 
 | Date       | Work Completed / Notes |
 |------------|------------------------|
