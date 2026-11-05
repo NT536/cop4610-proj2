@@ -1,2 +1,9 @@
 bin/
 obj/
+*.ko
+*.o
+*.mod
+*.mod.c
+*.symvers
+*.order
+.*.cmd
