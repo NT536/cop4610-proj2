@@ -152,7 +152,8 @@ Each member records their contributions here.
 | 2026-10-23 | Created README.md document, along with completing part1 of the project, before moving onto research and the creation of part2  |
 | 2026-10-29 | Created makefile and did some adjustment to the my_timer.c file. Added .gitignore file.   |
 | 2026-10-30 | Compiled and installed the kernel system calls into the Linux VM. Was stalled part way through. |
-| 2026-11-4 | Continued work on part 3b. Finished work and compilation of the kernel after several hours of trying. |
+| 2026-11-4 | Continued work on part 3b. Finished work and compilation of the kernel after several hours of trying. Should be usable for future parts of project now. |
+| 2026-11-5 | Finished testing 3f, project is complete and ready to be graded. |
 
 ### Akshat Thapliyal
 
