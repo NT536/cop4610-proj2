@@ -64,10 +64,19 @@ Proj2COP4610/
 │ ├── part1.c
 | └── part1.trace
 ├── part2/
+│ ├── src/
+│   └── my_timer.c
+│ └── Makefile
 ├── part3/
 │ ├── syscalls.c
-│ └── scripts/
+│ ├── scripts/
 │   └── add_syscalls.sh
+│ ├── src/
+│   ├── elevator_main.c
+│   ├── elevator_proc.c
+│   ├── elevator_thread.c
+│   └── elevator.h
+│ └── syscalls.c
 ├── README.md
 └── Makefile
 ```
