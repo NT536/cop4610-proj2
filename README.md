@@ -147,19 +147,12 @@ Each member records their contributions here.
 
 ### Nathaniel Thompson
 
-<<<<<<< HEAD
 | Date       | Work Completed / Notes |
 |------------|------------------------|
 | 2026-10-23 | Created README.md document, along with completing part1 of the project, before moving onto research and the creation of part2  |
 | 2026-10-29 | Created makefile and did some adjustment to the my_timer.c file. Added .gitignore file.   |
 | 2026-10-30 | Compiled and installed the kernel system calls into the Linux VM. Was stalled part way through. |
-=======
-| Date       | Work Completed / Notes                                                                                                        |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| 2026-10-23 | Created README.md document, along with completing part1 of the project, before moving onto research and the creation of part2 |
-| YYYY-MM-DD | Created makefile and did some adjustment to the my_timer.c file. Added .gitignore file.                                       |
-| YYYY-MM-DD | [Description of task]                                                                                                         |
->>>>>>> cc9a0b835869faa7c7fd9fb4bd459dec3f574395
+| 2026-11-4 | Continued work on part 3b. Finished work and compilation of the kernel after several hours of trying. |
 
 ### Akshat Thapliyal
 
