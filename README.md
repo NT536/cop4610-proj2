@@ -96,15 +96,11 @@ For a C/C++ example:
 make
 ```
 
-This will build the executable in side the bin folder
+This will compile the necessary executables for the module
 
 ### Execution
 
-```bash
-make run
-```
-
-This will run the program ...
+Install the module through using insmod, and then perform the elevator test using consumer and producer.
 
 ## Part 3 Kernel Setup (one time, on the VM)
 
